@@ -23,7 +23,7 @@ class FoundationFormsServiceProvider extends IlluminateHtmlServiceProvider
     {
         $app = $this->app;
         if (version_compare($app::VERSION, '5.0') < 0) {
-            $this->package('manavo/bootstrap-forms');
+            $this->package('ckdot/foundation-forms');
         }
     }
 

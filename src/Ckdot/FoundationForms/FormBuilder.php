@@ -15,11 +15,39 @@ class FormBuilder extends IlluminateFormBuilder
     protected $groupStack = [];
 
     /**
+     * Stores for each group if a label is present.
+     * So we know if the label tag needs to get closed again when the group is closed.
+     *
+     * @var bool[]
+     */
+    protected $hasLabelStack = [];
+
+    /**
      * An array containing the options of the currently open form groups.
      *
      * @var array
      */
     protected $groupOptions = [];
+
+    /**
+     * Create a form label element.
+     *
+     * @param  string  $name
+     * @param  string  $value
+     * @param  array   $options
+     * @return string
+     */
+    public function label($name = null, $value = null, $options = array())
+    {
+        $this->labels[] = $name;
+
+        $options = $this->html->attributes($options);
+
+        $value = e($this->formatLabel($name, $value));
+
+        $for = $name ? 'for="' . $name . '"' : '';
+        return '<label '.$for.$options.'>'.$value.'</label>';
+    }
 
     /**
      * Open a new form group.
@@ -38,8 +66,8 @@ class FormBuilder extends IlluminateFormBuilder
         $labelOptions = []
     ) {
         // Append the name of the group to the groupStack.
-        $this->groupStack[]     = $name;
-        $this->groupOptions[]   = $options;
+        $this->groupStack[] = $name;
+        $this->hasLabelStack[] = $label ? true : false;
 
         if ($this->hasErrors($name)) {
             // If the form element with the given name has any errors,
@@ -49,7 +77,8 @@ class FormBuilder extends IlluminateFormBuilder
 
         // If a label is given, we set it up here. Otherwise, we will just
         // set it to an empty string.
-        $label = $label ? $this->label($name, $label, $labelOptions) : '';
+        $label = $label ? $this->label(null, $label, $labelOptions) : '';
+        $label = str_replace('</label>', '', $label);
 
         $attributes = [];
         foreach ($options as $key => $value) {
@@ -68,22 +97,18 @@ class FormBuilder extends IlluminateFormBuilder
      */
     public function closeGroup()
     {
-        // Get the last added name from the groupStack and
-        // remove it from the array.
-        $name = array_pop($this->groupStack);
+        $name       = array_pop($this->groupStack);
+        $hasLabel   = array_pop($this->hasLabelStack);
 
-        // Get the last added options to the groupOptions
-        // This way we can check if error blocks were enabled
-        $options = array_pop($this->groupOptions);
-
-        // Check to see if we are to include the formatted help block
-        if ($this->hasErrors($name)) {
-            // Get the formatted errors for this form group.
-            $errors = $this->getFormattedErrors($name);
-        }
+        $errors = $this->getFormattedErrors($name);
 
         // Append the errors to the group and close it out.
-        return $errors . '</div>';
+        $html = $errors . '</div>';
+
+        if ($hasLabel) {
+            $html = '</label>' . $html;
+        }
+        return $html;
     }
 
     /**
@@ -152,7 +177,7 @@ class FormBuilder extends IlluminateFormBuilder
         // Return the formatted error message, if the form element has any.
         return $errors->first(
             $this->transformKey($name),
-            '<small class="error">:message</span>'
+            '<small class="error">:message</small>'
         );
     }
 
