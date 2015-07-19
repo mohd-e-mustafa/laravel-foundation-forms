@@ -1,8 +1,10 @@
-<?php namespace Manavo\BootstrapForms;
+<?php
+
+namespace Ckdot\FoundationForms;
 
 use Illuminate\Html\HtmlServiceProvider as IlluminateHtmlServiceProvider;
 
-class BootstrapFormsServiceProvider extends IlluminateHtmlServiceProvider
+class FoundationFormsServiceProvider extends IlluminateHtmlServiceProvider
 {
 
     /**

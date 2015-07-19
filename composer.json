@@ -4,6 +4,10 @@
     "license": "MIT",
     "authors": [
         {
+            "name": "Christian Kilb",
+            "email": "christian.kilb@live.com"
+        },
+        {
             "name": "Philip Manavopoulos",
             "email": "manavo@gmail.com"
         }
@@ -13,7 +17,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Manavo\\BootstrapForms\\": "src/"
+            "Ckdot\\FoundationForms\\": "src/"
         }
     },
     "minimum-stability": "stable"
