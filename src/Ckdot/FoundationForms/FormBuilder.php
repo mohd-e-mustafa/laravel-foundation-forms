@@ -1,6 +1,6 @@
 <?php
 
-namespace Ckdot\BootstrapForms;
+namespace Ckdot\FoundationForms;
 
 use Illuminate\Html\FormBuilder as IlluminateFormBuilder;
 
