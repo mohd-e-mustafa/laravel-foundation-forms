@@ -1,6 +1,6 @@
 {
     "name": "ckdot/laravel-foundation-forms",
-    "description": "Reduce the boilerplate code required to get forms in Laravel to have Bootstrap styling",
+    "description": "Reduce the boilerplate code required to get forms in Laravel to have Foundation styling",
     "license": "MIT",
     "authors": [
         {
