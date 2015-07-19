@@ -6,7 +6,7 @@ You can find the original article here: http://blog.stidges.com/post/easy-bootst
 ## Install
 
 ```
-composer require ckdot/laravel-foundation-forms:~0.1
+composer require ckdot/laravel-foundation-forms:~1.0
 ```
 
 ## Configure
@@ -21,8 +21,8 @@ return array(
     // ...
     'providers' => array(
         // ...
-        // 'Illuminate\Html\HtmlServiceProvider',
-        'Ckdot\FoundationForms\FoundationFormsServiceProvider',
+        Illuminate\Html\HtmlServiceProvider::class,
+        Ckdot\FoundationForms\FoundationFormsServiceProvider::class,
         // ...
     ),
     // ...
