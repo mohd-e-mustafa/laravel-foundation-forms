@@ -69,6 +69,8 @@ class FormBuilder extends IlluminateFormBuilder
         $this->groupStack[] = $name;
         $this->hasLabelStack[] = $label ? true : false;
 
+        $options = $this->appendClassToOptions('columns', $options);
+
         if ($this->hasErrors($name)) {
             // If the form element with the given name has any errors,
             // apply the 'has-error' class to the group.
