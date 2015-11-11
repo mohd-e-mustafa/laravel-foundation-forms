@@ -67,7 +67,7 @@ class FormBuilder extends IlluminateFormBuilder
     ) {
         // Append the name of the group to the groupStack.
         $this->groupStack[] = $name;
-        $this->hasLabelStack[] = $label ? true : false;
+        $this->hasLabelStack[] = null !== $label ? true : false;
 
         $options = $this->appendClassToOptions('columns', $options);
 
@@ -79,7 +79,7 @@ class FormBuilder extends IlluminateFormBuilder
 
         // If a label is given, we set it up here. Otherwise, we will just
         // set it to an empty string.
-        $label = $label ? $this->label(null, $label, $labelOptions) : '';
+        $label = null !== $label ? $this->label(null, $label, $labelOptions) : '';
         $label = str_replace('</label>', '', $label);
 
         $attributes = [];
