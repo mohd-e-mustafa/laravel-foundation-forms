@@ -43,7 +43,7 @@ class FormBuilder extends IlluminateFormBuilder
 
         $options = $this->html->attributes($options);
 
-        $value = e($this->formatLabel($name, $value));
+        $value = $this->formatLabel($name, $value);
 
         $for = $name ? 'for="' . $name . '"' : '';
         return '<label '.$for.$options.'>'.$value.'</label>';
