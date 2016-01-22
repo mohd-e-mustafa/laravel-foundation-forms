@@ -2,9 +2,9 @@
 
 namespace Ckdot\FoundationForms;
 
-use Illuminate\Html\HtmlServiceProvider as IlluminateHtmlServiceProvider;
+use Collective\Html\HtmlServiceProvider as CollectiveHtmlServiceProvider;
 
-class FoundationFormsServiceProvider extends IlluminateHtmlServiceProvider
+class FoundationFormsServiceProvider extends CollectiveHtmlServiceProvider
 {
 
     /**
@@ -34,9 +34,13 @@ class FoundationFormsServiceProvider extends IlluminateHtmlServiceProvider
      */
     public function registerFormBuilder()
     {
-        $this->app->bindShared('form', function ($app) {
-            $form = new FormBuilder($app['html'], $app['url'],
-                $app['session.store']->getToken());
+        $this->app->singleton('form', function ($app) {
+            $form = new FormBuilder(
+                $app['html'],
+                $app['url'],
+                $app['view'],
+                $app['session.store']->getToken()
+            );
 
             return $form->setSessionStore($app['session.store']);
         });

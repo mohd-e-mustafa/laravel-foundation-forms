@@ -2,9 +2,9 @@
 
 namespace Ckdot\FoundationForms;
 
-use Illuminate\Html\FormBuilder as IlluminateFormBuilder;
+use Collective\Html\FormBuilder as CollectiveFormBuilder;
 
-class FormBuilder extends IlluminateFormBuilder
+class FormBuilder extends CollectiveFormBuilder
 {
 
     /**
