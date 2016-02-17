@@ -38,7 +38,6 @@ class FoundationFormsServiceProvider extends CollectiveHtmlServiceProvider
             $form = new FormBuilder(
                 $app['html'],
                 $app['url'],
-                $app['view'],
                 $app['session.store']->getToken()
             );
 
