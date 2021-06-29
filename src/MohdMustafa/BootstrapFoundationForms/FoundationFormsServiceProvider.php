@@ -1,6 +1,6 @@
 <?php
 
-namespace Ckdot\FoundationForms;
+namespace MohdMustafa\BootstrapFoundationForms;
 
 use Collective\Html\HtmlServiceProvider as CollectiveHtmlServiceProvider;
 

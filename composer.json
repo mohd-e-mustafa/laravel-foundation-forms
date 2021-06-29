@@ -13,8 +13,9 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
-        "laravelcollective/html": "5.*"
+        "php": ">=7.4.0",
+        "laravelcollective/html": "^6.2",
+        "laravel/framework": "7.*"
     },
     "autoload": {
         "psr-0": {
