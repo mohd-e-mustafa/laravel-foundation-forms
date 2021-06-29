@@ -15,7 +15,7 @@ Make sure you comment out the existing HtmlServiceProvider (Illuminate\Html\Html
 
 ```php
 <?php
-// File (Laravel 5): config/app.php
+// File (Laravel 7): config/app.php
 
 return array(
     // ...

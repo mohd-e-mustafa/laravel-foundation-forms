@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Ckdot\\FoundationForms\\": "src/"
+            "MohdMustafa\\BootstrapFoundationForms\\": "src/"
         }
     },
     "minimum-stability": "stable"
